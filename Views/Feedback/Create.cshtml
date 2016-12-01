@@ -1,0 +1,52 @@
+﻿@model Online_Book_Store.Models.Feedback
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Give your feedback or any query</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Feedback</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.email)
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.contact)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.contact)
+            @Html.ValidationMessageFor(model => model.contact)
+        </div>
+
+        <div class="editor-label">
+            Suggestion/Query
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.query)
+            @Html.ValidationMessageFor(model => model.query)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}

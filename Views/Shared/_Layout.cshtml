@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Book Store : @ViewBag.Title</title>
+    <style type="text/css">
+        #wrap {
+            width: 900px;
+            height: auto;
+            margin: auto;
+            /*background-color: #FFFFFF;*/
+        }
+        #hed {
+          background-color:darksalmon;
+            height:150px;
+
+        }
+
+        .footer {
+            height: 100px;
+            border-top: 1px #b2b2b2 dashed;
+            
+            background-color: white;
+            width: 900px;
+            margin-left: 350px;
+        }
+        #fot {
+            background-color:ButtonText;
+            margin-left: 300px;
+             height: 100px;
+
+        }
+        .left_footer {
+            float: right;
+            padding: 10px 0 0 10px;
+        }
+
+        .right_footer {
+            float:left;
+            padding: 10px 10px 0 0;
+        }
+
+        .footer a {
+            text-decoration: none;
+            padding: 0 5px 0 5px;
+            color: #afaeaf;
+        }
+    </style>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jquery.autocomplete.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" ></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-latest.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/__jquery.tablesorter.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.autocomplete.min.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#Cart").tablesorter();
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div id="hed">
+            <div class="logo">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/Images/logo.gif")" alt="" title="" border="0" /></a>
+            </div>
+
+            <div id="menu">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Home", "Home")</li>
+                    <li>@Html.ActionLink("Search book", "Create", "SearchBook")</li>
+                    @{if(Session["email"]!=null){
+                   <li>@Html.ActionLink("Cart", "Index", "ShoppingCart")</li>
+                    }}
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
+                    <li>@Html.ActionLink("Registration", "create", "Register")</li>
+                    <li>@Html.ActionLink("Login", "Login", "UserLogin")</li>
+                    <li>@Html.ActionLink("Feedback", "Create", "Feedback")</li>
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="center_content">
+            @RenderBody()
+        </div>
+        <div class="clear">
+        </div>
+        <div class="fot">
+            <div class="left_footer">
+              
+            </div>
+            <div class="right_footer">
+                <a href="#">home</a>
+                <a href="#">Serch Book</a>
+                <a href="#">Registration</a>
+                <a href="#">Login</a>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

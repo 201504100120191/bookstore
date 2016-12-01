@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Online_Book_Store.Models.Add_Book>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    Online_Book_Store.Models.Context db=new Online_Book_Store.Models.Context();
+}
+<style type="text/css">
+    .left_content {
+    width: 880px;
+    float:left;
+    background-color:white;
+    padding: 20px 0 20px 20px;
+    font-style:italic;
+}
+</style>
+
+<div class="left_content">
+@using (Html.BeginForm())
+{
+   
+<table align="center">
+    @foreach (var item in db.Add_Book)
+    {
+        <tr>
+            <td align="center"><img src="~/Book_img/@item.b_img" width="100" height="100" /></td></tr>
+           <tr> <td align="center">@item.bname</td></tr>
+            <tr><td align="center"><a href="~/Book/@item.b_file" target="_blank">Open Book</a></td>
+        </tr>
+        <tr><td align ="center"><a href="~/"></a></td></tr>
+    }
+</table>
+}
+</div>
+<div class="right_content">
+
+</div>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Online_Book_Store.Models.Add_Book>
+
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@using (Html.BeginForm ("Create","SearchBook",FormMethod.Get ))
+{
+<b>Search by:</b>@Html.RadioButton("searchBy","0")<text>Title</text>
+@Html.RadioButton("searchBy","1")<text>Author</text>
+@Html.RadioButton("searchBy","2")<text>Publication</text><br />
+@Html.TextBox("Search");<input type="submit" value="Search" />
+ }
+*@
+
+@using (Html.BeginForm("create", "SearchBook", FormMethod.Post))
+{
+    <table>
+          <tr>
+              <td>
+                   @Html.Label("Search Book by:")
+              </td>
+              <td>
+                 @Html.RadioButton("searchBy", "0")
+                  @Html.Label("Title")
+              </td>
+              <td>
+                  @Html.RadioButton("searchBy", "1")
+                  @Html.Label("Author")
+              </td>
+              <td>
+                  @Html.RadioButton("searchBy", "2")
+                  @Html.Label("Publication")
+              </td>
+              <td>
+                  <input type="text" name="q" />
+              </td>
+              <td>
+                  <input type="submit" value="Search" id="btnSubmit" />
+              </td>
+          </tr>
+    </table>
+}
+
+@{
+    Online_Book_Store.Models.Context db=new Online_Book_Store.Models.Context();
+}
+@*@using (Html.BeginForm())
+{
+<table align="center">
+    @foreach (var item in db.Add_Book)
+    {
+        <tr>
+            <td align="center"><img src="~/Book_img/@item.b_img" width="100" height="100" /></td></tr>
+           <tr> <td align="center">@item.bname</td></tr>
+            <tr><td align="center"><a href="~/Book/@item.b_file" target="_blank">Read book</a></td>
+        </tr>
+    }
+</table>
+}*@
+@{
+    if(Model.Count() > 0)
+    {
+        @ViewBag.SearchParameter
+    }
+    else
+    {
+        <hr />@Html.Label("No, Record(s) not found")<hr />
+    }   
+}

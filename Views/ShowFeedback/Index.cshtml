@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Online_Book_Store.Models.Feedback>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+     <script type="text/javascript" language="javascript">
+         function DisableBackButton() {
+             window.history.forward()
+         }
+         DisableBackButton();
+         window.onload = DisableBackButton;
+         window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+         window.onunload = function () { void (0) }
+</script>
+</head>
+<body style="background-color:white;">
+    <div id="header">
+            <div class="logo">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/Images/logo.gif")" alt="" title="" border="0" /></a>
+            </div>
+
+            <div id="menu">
+                <ul>
+                    <li>@Html.ActionLink("Add book", "Create", "AddBook")</li>
+                    <li>@Html.ActionLink("Add book category", "Create", "BookCategory")</li>
+                    <li>@Html.ActionLink("show feedback", "Index", "ShowFeedback")</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "AdminLogin")</li>
+                </ul>
+            </div>
+        </div>
+    <div style="margin-top:10px;" align="center">    
+        <table border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.query)
+            </th>
+            
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.query)
+            </td>
+        </tr>
+    }
+    
+    </table>
+        </div>
+</body>
+</html>

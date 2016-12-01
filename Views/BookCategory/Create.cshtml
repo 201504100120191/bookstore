@@ -1,0 +1,67 @@
+﻿@model Online_Book_Store.Models.Book_Category
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+     <script type="text/javascript" language="javascript">
+         function DisableBackButton() {
+             window.history.forward()
+         }
+         DisableBackButton();
+         window.onload = DisableBackButton;
+         window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+         window.onunload = function () { void (0) }
+</script>
+</head>
+<body style="background-color:white;">
+    <div id="header">
+            <div class="logo">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/Images/logo.gif")" alt="" title="" border="0" /></a>
+            </div>
+
+            <div id="menu">
+                <ul>
+                    <li>@Html.ActionLink("Add book", "Create", "AddBook")</li>
+                    <li>@Html.ActionLink("Add book category", "Create", "BookCategory")</li>
+                    <li>@Html.ActionLink("show feedback", "Index", "ShowFeedback")</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "AdminLogin")</li>
+                </ul>
+            </div>
+        </div>
+    <div style="margin-top:10px;" align="center">
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+    
+        <fieldset style="width:500px;">
+            <legend>Book_Category</legend>
+    
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Category)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Category)
+                        @Html.ValidationMessageFor(model => model.Category)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Create" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+        </div>
+</body>
+</html>

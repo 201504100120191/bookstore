@@ -1,0 +1,130 @@
+﻿@model Online_Book_Store.Models.Add_Book
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    
+    </style>
+     <script type="text/javascript" language="javascript">
+         function DisableBackButton() {
+             window.history.forward()
+         }
+         DisableBackButton();
+         window.onload = DisableBackButton;
+         window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+         window.onunload = function () { void (0) }
+</script>
+</head>
+<body style="background-color:white;">
+    <div id="hed">
+            <div class="logo">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/Images/logo.gif")" alt="" title="" border="0" /></a>
+            </div>
+
+            <div id="menu">
+                <ul>
+                    <li>@Html.ActionLink("Add book", "Create", "AddBook")</li>
+                    <li>@Html.ActionLink("Add book category", "Create", "BookCategory")</li>
+                    <li>@Html.ActionLink("show feedback", "Index", "ShowFeedback")</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "AdminLogin")</li>
+                </ul>
+            </div>
+        </div>
+    <div style="margin-top:100px;margin-right:150px;" align="center">
+    @using (Html.BeginForm("Create", "AddBook", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+        @Html.ValidationSummary(true)
+    
+        <fieldset style="width:700px;">
+            <legend>Add_Book</legend>
+    
+            <table>
+                <tr>
+                    <td>
+                        Book category                        
+                    </td>
+                    <td>
+                        @Html.DropDownList("cid","---select---")
+                        @Html.ValidationMessageFor(model => model.cid)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Book name
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.bname)
+                        @Html.ValidationMessageFor(model => model.bname)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Book title    
+                    </td>
+                    <td>
+                         @Html.EditorFor(model => model.btitle)
+                         @Html.ValidationMessageFor(model => model.btitle)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Author
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.author)
+                        @Html.ValidationMessageFor(model => model.author)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Publication name
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.publication)
+                        @Html.ValidationMessageFor(model => model.publication)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Price                        
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.price)
+                        @Html.ValidationMessageFor(model => model.price)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                         Book image
+                    </td>
+                    <td>
+                        <input type="file" name="fuimg"/> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Book file
+                    </td>
+                    <td>
+                        <input type="file" name="fufile"/> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="Create" value="Create" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+        </div>
+</body>
+</html>
